@@ -200,7 +200,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .hero {
   min-height: 811px;
-  background: url(/img/main/hero/hero-bg.jpg) center / cover no-repeat;
+  background: url(img/main/hero/hero-bg.jpg) center / cover no-repeat;
   padding: 189px 15px 100px 15px;
   color: #fff;
 }
@@ -567,7 +567,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .footer {
   padding: 301px 15px 0px 15px;
-  background: url(/img/footer/footer_background.jpg) center / cover no-repeat;
+  background: url(img/footer/footer_background.jpg) center / cover no-repeat;
 }
 .footer__top {
   display: flex;
