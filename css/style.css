@@ -150,10 +150,34 @@ h1, h2, h3, h4, h5, h6 {
 }
 .header {
   position: absolute;
-  padding: 25px 15px;
+  left: 0;
+  width: 100%;
+}
+.header._active {
+  position: fixed;
+  z-index: 1;
+}
+.header:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  z-index: 2;
+  transition: all 0.2s ease-in;
+}
+.header._active:before {
+  content: "";
+  position: absolute;
   left: 0;
   top: 0;
   width: 100%;
+  height: 100%;
+  background-color: #333;
+  z-index: 2;
+  transition: all 0.4s ease-in;
 }
 .header__container {
   display: flex;
@@ -165,10 +189,25 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto;
 }
 .header__logo {
+  position: relative;
+  z-index: 3;
+  transition: all 0.4s ease;
+}
+.header__logo._active {
+  position: relative;
+  z-index: 3;
+  top: 0;
+  transition: all 0.4s ease;
 }
 .logo {
 }
+.hb {
+  position: fixed;
+}
 .header__burger {
+  position: fixed;
+  right: 15px;
+  z-index: 3;
 }
 .burger {
   --offset-vertical: 14px;
@@ -178,7 +217,9 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 50%;
   width: 40px;
   height: 40px;
+  border: 1px solid rgba(71, 71, 71, 0.2);;
   padding: var(--offset-vertical) var(--offset-horizontal);
+  z-index: 3;
 }
 .burger__line {
   position: absolute;
@@ -194,6 +235,46 @@ h1, h2, h3, h4, h5, h6 {
 }
 .burger__line:nth-child(3) {
   top: calc(var(--offset-vertical) + 12px);
+}
+.header__menu {
+  z-index: 1;
+  position: fixed;
+  background-color: #fff;
+  left: 0;
+  top: -100%;
+  width: 100%;
+  height: 70%;
+  overflow: auto;
+  transition: all 0.4s ease;
+  box-shadow: 0px 50px 100px rgba(0, 0, 0, 0.3);
+}
+.header__menu._active {
+  z-index: 1;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 70%;
+  margin-block-end: 40%;
+  background-color: #fff;
+  padding: 80px 0 0 0;
+  overflow: auto;
+  transition: all 0.4s ease;
+}
+.header__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.header__list li{
+  display: block;
+  padding: 0 0 0 20px;
+  margin: 0 0 30px 0;
+}
+.header__link {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 26px;
+  color: var(--desct-color);
 }
 .main {
   flex: 1 1 auto;
@@ -666,19 +747,19 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.3s ease-in-out;
 }
 .social__link-fb {
-  background-image: url(/img/main/icon/facebook.svg);
+  background-image: url(../img/main/icon/facebook.svg);
   opacity: 0.4;
 }
 .social__link-tw {
-  background-image: url(/img/main/icon/twitter.svg);
+  background-image: url(../img/main/icon/twitter.svg);
   opacity: 0.4;
 }
 .social__link-g {
-  background-image: url(/img/main/icon/google-plus.svg);
+  background-image: url(../img/main/icon/google-plus.svg);
   opacity: 0.4;
 }
 .social__link-in {
-  background-image: url(/img/main/icon/linkedin.svg);
+  background-image: url(../img/main/icon/linkedin.svg);
   opacity: 0.4;
 }
 .social__link-fb:hover {
@@ -711,7 +792,12 @@ h1, h2, h3, h4, h5, h6 {
   color: #B5C096;
 }
 
+
+
 @media (min-width: 1280px) {
+  .header__menu._active {
+    padding-top: 110px;
+  }
   .comment {
     position: absolute;
     bottom: -40px;
@@ -723,9 +809,26 @@ h1, h2, h3, h4, h5, h6 {
   .eunice__comment {
     left: 320px;
   }
+  .header {
+    padding: 25px 15px;
+  }
+  .header__menu {
+    padding: 110px 0 0 0;
+  }
 }
-
+@media (min-width: 1140px) {
+  .header__list {
+    max-width: 1150px;
+    margin: 0 auto;
+  }
+}
 @media (min-width: 992px) and (max-width: 1279px) {
+  .header {
+    padding: 20px 15px;
+  }
+  .header__menu._active {
+    padding-top: 100px;
+  }
   .comment {
     position: absolute;
   }
@@ -779,6 +882,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
+  .header__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .header {
+    padding: 20px 15px;
+  }
+  .header__menu._active {
+    padding-top: 100px;
+  }
   .partners__logos {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -907,6 +1019,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (min-width: 480px) and (max-width: 767px) {
+  .header {
+    padding: 10px 15px;
+  }
+  .header__logo img{
+    max-width: 90%;
+  }
+  .header__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .hero {
     min-height: 751px;
     padding: 140px 15px 60px 15px;
@@ -1017,8 +1138,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (min-width: 320px) and (max-width: 479px) {
+  .header {
+    padding: 10px 15px;
+  }
   .header__logo img{
     max-width: 90%;
+  }
+  .header__menu._active {
+    height: 100%;
+  }
+  .header__list {
+    grid-template-columns: repeat(1, 1fr);
   }
   .hero {
     min-height: 700px;
