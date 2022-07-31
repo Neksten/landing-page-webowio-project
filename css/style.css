@@ -30,7 +30,7 @@
 }
 @font-face {
   font-family: 'Poppins';
-  src: url(/fonts/Poppins-Bold.woff) format('woff');
+  src: url(../fonts/Poppins-Bold.woff) format('woff');
   font-display: swap;
   font-weight: 700;
   font-style: normal;
