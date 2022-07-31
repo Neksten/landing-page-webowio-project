@@ -2,28 +2,28 @@
 
 @font-face {
   font-family: 'Poppins';
-  src: url(/fonts/Poppins-Regular.woff) format('woff');
+  src: url(../fonts/Poppins-Regular.woff) format('woff');
   font-display: swap;
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: 'Poppins';
-  src: url(/fonts/Poppins-Italic.woff) format('woff');
+  src: url(../fonts/Poppins-Italic.woff) format('woff');
   font-display: swap;
   font-weight: 400;
   font-style: italic;
 }
 @font-face {
   font-family: 'Poppins';
-  src: url(/fonts/Poppins-Medium.woff) format('woff');
+  src: url(../fonts/Poppins-Medium.woff) format('woff');
   font-display: swap;
   font-weight: 500;
   font-style: normal;
 }
 @font-face {
   font-family: 'Poppins';
-  src: url(/fonts/Poppins-SemiBold.woff) format('woff');
+  src: url(../fonts/Poppins-SemiBold.woff) format('woff');
   font-display: swap;
   font-weight: 600;
   font-style: normal;
@@ -155,7 +155,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .header._active {
   position: fixed;
-  z-index: 1;
+  z-index: 2;
 }
 .header:before {
   content: "";
@@ -165,7 +165,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   height: 100%;
   background-color: #333;
-  z-index: 2;
+  z-index: 3;
   transition: all 0.2s ease-in;
 }
 .header._active:before {
@@ -176,7 +176,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   height: 100%;
   background-color: #333;
-  z-index: 2;
+  z-index: 3;
   transition: all 0.4s ease-in;
 }
 .header__container {
@@ -190,12 +190,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 .header__logo {
   position: relative;
-  z-index: 3;
+  z-index: 4;
   transition: all 0.4s ease;
 }
 .header__logo._active {
   position: relative;
-  z-index: 3;
+  z-index: 4;
   top: 0;
   transition: all 0.4s ease;
 }
@@ -207,7 +207,7 @@ h1, h2, h3, h4, h5, h6 {
 .header__burger {
   position: fixed;
   right: 15px;
-  z-index: 3;
+  z-index: 4;
 }
 .burger {
   --offset-vertical: 14px;
@@ -219,7 +219,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 40px;
   border: 1px solid rgba(71, 71, 71, 0.2);;
   padding: var(--offset-vertical) var(--offset-horizontal);
-  z-index: 3;
+  z-index: 4;
 }
 .burger__line {
   position: absolute;
@@ -237,7 +237,7 @@ h1, h2, h3, h4, h5, h6 {
   top: calc(var(--offset-vertical) + 12px);
 }
 .header__menu {
-  z-index: 1;
+  z-index: 2;
   position: fixed;
   background-color: #fff;
   left: 0;
@@ -249,7 +249,7 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0px 50px 100px rgba(0, 0, 0, 0.3);
 }
 .header__menu._active {
-  z-index: 1;
+  z-index: 2;
   position: fixed;
   left: 0;
   top: 0;
@@ -293,19 +293,49 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 0 22px 0;
   font-size: 14px;
   line-height: 21px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease 0.3s;
+}
+.hero__subtitle._active {
+  display: inline-block;  
+  margin: 0 0 22px 0;
+  font-size: 14px;
+  line-height: 21px;
+  opacity: 1;
+  transform: translateY(0px);
 }
 .hero__title {
   margin: 0 0 24px 0;
   font-size: 60px;
   font-weight: 700;
   line-height: 74px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease 0.5s;
+}
+.hero__title._active {
+  margin: 0 0 24px 0;
+
+  font-weight: 700;
+  line-height: 74px;
+  opacity: 1;
+  transform: translateY(0px);
 }
 .hero__descr {
   margin: 0 0 45px 0;
   font-size: 16px;
   line-height: 26px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease 0.7s;
 }
-.hero__link {
+.hero__descr._active {
+  margin: 0 0 45px 0;
+  font-size: 16px;
+  line-height: 26px;
+  opacity: 1;
+  transform: translateY(0px);
 }
 .link {
   display: inline-block;
@@ -315,6 +345,15 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 18px;
   border-bottom: 1px solid currentColor;
   transition: all 0.3s ease-in-out;
+}
+.hero__link {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease 0.9s;
+}
+.hero__link._active {
+  opacity: 1;
+  transform: translateY(0px);
 }
 .link:hover {
   color: #ffd723;
@@ -328,7 +367,6 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 88.5%;
   position: relative;
   top: -114px;
-  right: 0;
   margin-left: auto;
 }
 .partners__logos {
@@ -354,6 +392,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 .tasks__content {
   max-width: 475px;
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: opacity 0.3s ease 0s, transform 0.5s ease 0s;
+}
+.tasks__content._active {
+  max-width: 475px;
+  transform: translateX(0);
+  opacity: 1;
 }
 .tasks__subtitle {
   display: inline-block;
@@ -484,6 +530,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 .dvd__image {
   margin: 0 76px 0px 0;
+  position: relative;
+  left: -100%;
+  opacity: 0.8;
+  transition: all 0.3s ease 0s;
+}
+.dvd__image._active {
+  left: 0;
+  opacity: 1;
 }
 .history__content {
   display: flex;
@@ -531,6 +585,16 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0 0 0 100px;
   margin: 0 0 140px;
 }
+.model__image {
+  position: relative;
+  right: -100%;
+  opacity: 0.8;
+  transition: all 0.3s ease 0s;
+}
+.model__image._active {
+  right: 0;
+  opacity: 1;
+}
 .model__content {
   margin: 0 70px 0 0;
 }
@@ -541,10 +605,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 .model__link {
 }
-.model__image {
-}
 .lina__comment {
-  right: 322px;
+
 }
 .lina__comment-descr {
 }
@@ -573,6 +635,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 .booking__image {
   margin: 0 76px 0px 0;
+  position: relative;
+  left: -100%;
+  opacity: 0.8;
+  transition: all 0.3s ease 0s;
+}
+.booking__image._active {
+  left: 0;
+  opacity: 1;
 }
 .eunice__comment {
 }
@@ -593,6 +663,13 @@ h1, h2, h3, h4, h5, h6 {
 .services {
   margin: 0 0 6px 0;
   position: relative;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.7s ease 0s;
+}
+.services._active {
+  opacity: 1;
+  transform: translateY(0px);
 }
 .services__title {
   max-width: 607px;
@@ -633,10 +710,16 @@ h1, h2, h3, h4, h5, h6 {
 .get-started {
   position: relative;
   top: 181px;
-  box-shadow: 50px 130px 100px 0px #00000025;
   background-color: #fafafa;
   width: 89.5%;
   padding: 70px 164px;
+  opacity: 0.8;
+  transition: all 0.5s ease 0s;
+}
+.get-started._active {
+  opacity: 1;
+  transform: translateX(0px);
+  box-shadow: 50px 130px 100px 0px #00000025;
 }
 .get-started__title {
   font-size: 60px;
@@ -793,20 +876,60 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-
+@media (max-height: 640px) {
+  .hero__link {
+    transition: all 0.5s ease 0s;
+  }
+}
+@media (max-height: 488px) {
+  .hero__descr {
+    transition: all 0.5s ease 0s;
+  }
+}
 @media (min-width: 1280px) {
   .header__menu._active {
     padding-top: 110px;
+  }
+  .hero {
+    position: relative;
+    z-index: 1;
+  }
+  .partners { 
+    z-index: 1;
+  }
+  .tasks__comment {
+    opacity: 0;
+    transform: translateY(-50%);
+    transition: opacity 1s ease-in-out 0s, transform 1s ease 0s;
+  }
+  .tasks__comment._active {
+    opacity: 1;
+    transform: translateY(0);
   }
   .comment {
     position: absolute;
     bottom: -40px;
   }
   .angel__comment {
+    left: -100%;
+    transition: all 0.3s ease 0.2s;
+  }
+  .angel__comment._active {
     left: 320px;
     bottom: 40;
   }
+  .lina__comment {
+    right: -100%;
+    transition: all 0.3s ease 0.2s;
+  }
+  .lina__comment._active {
+    right: 322px;
+  }
   .eunice__comment {
+    left: -100%;
+    transition: all 0.3s ease 0.2s;
+  }
+  .eunice__comment._active {
     left: 320px;
   }
   .header {
@@ -837,6 +960,15 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: repeat(3, 1fr);
     gap: 66px;
   }
+  .tasks__comment {
+    opacity: 0;
+    transform: translateY(-40%);
+    transition: opacity 1s ease-in-out 0s, transform 1s ease 0s;
+  }
+  .tasks__comment._active {
+    opacity: 1;
+    transform: translateY(0);
+  }
   .history__content {
     padding-left: 30px;
   }
@@ -844,8 +976,13 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: column;
   }
   .angel__comment {
-    right: 100px;
+    right: -100%;
+    transition: all 0.3s ease 0s;
     bottom: 0;
+  }
+  .angel__comment._active {
+    right: 100px;
+    bottom: 0px;
   }
   .model {
     flex-direction: column;
@@ -862,7 +999,12 @@ h1, h2, h3, h4, h5, h6 {
   .model__descr {
     max-width: 400px;
   }
-  .lina__comment { 
+  .lina__comment {
+    right: -100%;
+    transition: all 0.3s ease 0s;
+    bottom: 0;
+  }
+  .lina__comment._active { 
     right: 100px;
     bottom: 0;
   }
@@ -870,6 +1012,11 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: column;
   }
   .eunice__comment {
+    right: -100%;
+    transition: all 0.3s ease 0s;
+    bottom: 0;
+  }
+  .eunice__comment._active {
     right: 100px;
     bottom: 0;
   }
@@ -909,6 +1056,13 @@ h1, h2, h3, h4, h5, h6 {
   .tasks__comment {
     margin-left: auto;
     margin-bottom: 100px;
+    opacity: 0;
+    transform: translateY(-30%);
+    transition: opacity 1s ease-in-out 0s, transform 1s ease 0s;
+  }
+  .tasks__comment._active {
+    opacity: 1;
+    transform: translateY(0);
   }
   .awesomr-project__container {
     flex-direction: column;
@@ -931,6 +1085,12 @@ h1, h2, h3, h4, h5, h6 {
   }
   .angel__comment {
     position: relative;
+    left: -100%;
+    transition: all 0.3s ease 0s;
+    bottom: 0;
+  }
+  .angel__comment._active {
+    position: relative;
     left: 30px;
   }
   .model {
@@ -945,17 +1105,29 @@ h1, h2, h3, h4, h5, h6 {
     padding-left: 135px;
     order: 1;
   }
-  .lina__comment { 
+  .lina__comment {
     position: relative;
+    transform: translateX(200%);
+    transition: all 0.3s ease 0s;
+    bottom: 0;
+    order: 3;
+  }
+  .lina__comment._active { 
+    position: relative;
+    transform: translateX(0);
     left: 30px;
     order: 3;
-    right: 100px;
-    bottom: 0;
   }
   .booking {
     flex-direction: column;
   }
   .eunice__comment {
+    position: relative;
+    left: -100%;
+    transition: all 0.3s ease 0s;
+    bottom: 0;
+  }
+  .eunice__comment._active {
     position: relative;
     left: 30px;
   }
@@ -1060,6 +1232,13 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 100px;
+    opacity: 0;
+    transform: translateY(-20%);
+    transition: opacity 1s ease-in-out 0s, transform 1s ease 0s;
+  }
+  .tasks__comment._active {
+    opacity: 1;
+    transform: translateY(0);
   }
   .user__logo-tasks {
     width: 60px;
@@ -1087,6 +1266,12 @@ h1, h2, h3, h4, h5, h6 {
   }
   .angel__comment {
     position: relative;
+    left: -100%;
+    transition: all 0.3s ease 0s;
+    bottom: 0;
+  }
+  .angel__comment._active {
+    position: relative;
     left: 30px;
   }
   .model {
@@ -1100,18 +1285,29 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: 76px;
     order: 1;
   }
-  .lina__comment { 
+  .lina__comment {
     position: relative;
+    transition: all 0.3s ease 0s;
+    transform: translateX(200%);
+    order: 3;
+  }
+  .lina__comment._active { 
+    position: relative;
+    transform: translateX(0);
     left: 30px;
     order: 3;
-    right: 100px;
-    bottom: 0;
   }
   .booking {
     flex-direction: column;
     padding: 0;
   }
   .eunice__comment {
+    position: relative;
+    left: -100%;
+    transition: all 0.3s ease 0s;
+    bottom: 0;
+  }
+  .eunice__comment._active {
     position: relative;
     left: 30px;
   }
@@ -1120,6 +1316,9 @@ h1, h2, h3, h4, h5, h6 {
   }
   .comment {
     margin: 0 110px 0 0;
+  }
+  .get-started {
+    transform: translateX(0px);
   }
   .services__list {
     padding: 0 20px;
@@ -1183,6 +1382,13 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 100px;
+    opacity: 0;
+    transform: translateY(-20%);
+    transition: opacity 1s ease-in-out 0s, transform 1s ease 0s;
+  }
+  .tasks__comment._active {
+    opacity: 1;
+    transform: translateY(0);
   }
   .tasks__comment-content {
     padding-bottom: 20px;
@@ -1226,6 +1432,12 @@ h1, h2, h3, h4, h5, h6 {
   }
   .angel__comment {
     position: relative;
+    left: -100%;
+    transition: all 0.3s ease 0s;
+    bottom: 0;
+  }
+  .angel__comment._active {
+    position: relative;
     left: 15px;
   }
   .model {
@@ -1239,12 +1451,17 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: 10%;
     order: 1;
   }
-  .lina__comment { 
+  .lina__comment {
     position: relative;
+    transform: translateX(200%);
+    transition: all 0.3s ease 0s;
+    order: 3;
+  }
+  .lina__comment._active { 
+    position: relative;
+    transform: translateX(0);
     left: 15px;
     order: 3;
-    right: 100px;
-    bottom: 0;
   }
   .booking {
     flex-direction: column;
@@ -1254,6 +1471,12 @@ h1, h2, h3, h4, h5, h6 {
     margin-right: 10%;
   }
   .eunice__comment {
+    position: relative;
+    left: -100%;
+    transition: all 0.3s ease 0s;
+    bottom: 0;
+  }
+  .eunice__comment._active {
     position: relative;
     left: 15px;
   }
